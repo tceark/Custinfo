@@ -1,0 +1,3 @@
+       01  WS-COST-ACCT-INFO.
+           05  WS-COST-CR-CODE        PIC X(03)     VALUE SPACES.
+           05  WS-COST-REMAINDER      PIC X(05)     VALUE LOW-VALUES.

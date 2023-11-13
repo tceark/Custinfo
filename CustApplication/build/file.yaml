@@ -1,0 +1,40 @@
+#
+# File associated properties used by Cust Application sample scripts
+# ** These are pre-configured and require no editing **
+#
+---
+buildProperties:
+
+  # Script Mappings - used to associate build scripts to programs
+  - key: scriptMapping
+    value: BMSProcessing
+    filePatterns:
+      - "**/*.bms"
+
+  - key: scriptMapping
+    value: CobolCompile
+    filePatterns:
+      - "**/COBOL/NA300.cbl"
+      - "**/COBOL/NA301.cbl"
+      - "**/COBOL/NA320A.cbl"
+      - "**/COBOL/NA320C.cbl"
+      - "**/COBOL/NA330A.cbl"
+      - "**/COBOL/NA330B.cbl"
+      - "**/COBOL/NA340A.cbl"
+      - "**/COBOL/NA340B.cbl"
+  - key: scriptMapping
+    value: LinkEdit
+    filePatterns:
+      - "**/*.lnk"
+
+  - key: scriptMapping
+    value: MFSGENUtility
+    filePatterns:
+      - "**/*.mfs"
+
+  # Language hints
+  - key: dbb.DependencyScanner.languageHint
+    value: COB
+    filePatterns:
+      - "**/*.cbl"
+      - "**/*.cpy"
