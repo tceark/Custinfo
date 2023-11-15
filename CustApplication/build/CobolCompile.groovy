@@ -196,35 +196,8 @@ if (rc <= 4) {
 
 job.stop()
 
-// run DB2 Bind PACKAGE if bind is turned on (see CustApplication/build/bind.properties)
-if (logicalFile.isSQL() && properties.RUN_DB2_BIND.toBoolean()) {
-    def scriptName = "$properties.sourceDir/CustApplication/build/BindPackage.groovy"
-    runScript(new File("BindPackage.groovy"), ["file":file])
-}
-
-// run newcopy for CICS program
-if (logicalFile.isCICS()) {
-
-     def confDir = "/usr/lpp/IBM/dbb/conf"
-     println("Execute Newcopy of $member CICS program")
-     def jcl = """\
-//NEWCOPY JOB ACC,'NEW COPY',
-//         CLASS=C,MSGCLASS=H,MSGLEVEL=(1,1),
-//         NOTIFY=&SYSUID
-//*
-// COMMAND 'F CICSTS55,CEMT SET PROG($member) NEWC'
-//*
-//IEFBR14 EXEC PGM=IEFBR14
-//*
-"""
-     JCLExec jclExec = new JCLExec()
-     try {
-         jclExec.text(jcl).confDir(confDir).execute()
-         }
-     catch (NoClassDefFoundError ex) {
-         def maxRC = jclExec.getMaxRC()
-         def jobID = jclExec.getSubmittedJobId()
-         println("maxrc1: $maxRC")
-         println("Newcopy of $member CICS program completed with RC - $maxRC .Job ID is $jobID")
-         }
- }
+//run DB2 Bind PACKAGE if bind is turned on (see CustApplication/build/bind.properties)
+//if (logicalFile.isSQL() && properties.RUN_DB2_BIND.toBoolean()) {
+//    def scriptName = "$properties.sourceDir/CustApplication/build/BindPackage.groovy"
+//    runScript(new File("BindPackage.groovy"), ["file":file])
+//}
